@@ -27,7 +27,7 @@
             <Insets bottom="8.0" />
          </VBox.margin>
       </Label>
-      <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="38.0" prefWidth="294.0" promptText="example@mail.com">
+      <TextField fx:id="userId" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="38.0" prefWidth="294.0" promptText="example@mail.com">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
@@ -39,7 +39,15 @@
             <Insets bottom="8.0" top="10.0" />
          </VBox.margin>
       </Label>
-      <PasswordField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="38.0" prefWidth="294.0" promptText="********" />
+      <PasswordField fx:id="pass" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="38.0" prefWidth="294.0" promptText="********" />
+      <Label fx:id="wrongAlert" layoutX="163.0" layoutY="216.0" prefHeight="15.0" prefWidth="295.0" textAlignment="CENTER" textFill="RED">
+         <font>
+            <Font name="SansSerif Regular" size="12.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </Label>
       <Button mnemonicParsing="false" onAction="#logInAdmin" prefHeight="42.0" prefWidth="181.0" style="-fx-background-color: #4CAF50; -fx-background-radius: 25;" text="Login" textFill="WHITE">
          <VBox.margin>
             <Insets top="10.0" />

@@ -1,15 +1,13 @@
 package com.example.supershopregular;
-import backend.DBMSConnection;
+
 import backend.LoginCheck;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,7 +15,7 @@ import java.sql.SQLException;
 import static com.example.supershopregular.HelloApplication.loadFXML;
 import static com.example.supershopregular.HelloApplication.scene;
 
-public class AdminLogin {
+public class CManagerLogin {
     @FXML
     private PasswordField pass;
 
@@ -27,7 +25,7 @@ public class AdminLogin {
     @FXML
     private Label wrongAlert;
 
-    private String passText,userIdText;
+    private String passText, userIdText;
 
     public String getPassText() {
         return passText;
@@ -37,36 +35,34 @@ public class AdminLogin {
         return userIdText;
     }
 
-    public AdminLogin() {
+    public CManagerLogin() {
     }
-    public AdminLogin( String userId,String pass) {
+
+    public CManagerLogin(String userId, String pass) {
 
         this.passText = pass;
         this.userIdText = userId;
     }
 
 
-
     @FXML
-    public void logInAdmin(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+    public void logInCounterManager(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
 
-        passText =  pass.getText();
+        passText = pass.getText();
         userIdText = userId.getText();
 
-        AdminLogin al = new AdminLogin(userId.getText(),pass.getText());
-        LoginCheck lc= new LoginCheck();
-         boolean authenticated = lc.authLogin(al.getUserIdText(),al.getPassText(),"admin");
-         if(authenticated){
-             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-             stage.close();
-             scene.setRoot(loadFXML("Dashboard"));
+        CManagerLogin al = new CManagerLogin(userId.getText(), pass.getText());
+        LoginCheck lc = new LoginCheck();
+        boolean authenticated = lc.authLogin(al.getUserIdText(), al.getPassText(), "counter_manager");
+        if (authenticated) {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            scene.setRoot(loadFXML("Dashboard"));
 
-         }
-         else{
-             wrongAlert.setText("Wrong User ID or Password! Try again.");
-         }
+        } else {
+            wrongAlert.setText("Wrong User ID or Password! Try again.");
+        }
 
 
     }
-
 }

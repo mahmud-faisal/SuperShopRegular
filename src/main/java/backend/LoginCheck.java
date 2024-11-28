@@ -15,29 +15,41 @@ public class LoginCheck {
         this.password = password;
     }
 
-    public  boolean authLogin(String userId,String password,String table) throws SQLException, ClassNotFoundException {
-        DBMSConnection dbmsConnect = new DBMSConnection("jdbc:mysql://localhost:3306/supershop", "root", "");
+    public LoginCheck() {
+    }
+
+    public static boolean authLogin(String userId, String password, String table) throws SQLException, ClassNotFoundException {
+        // Initialize the database connection
+        DBMSConnection dbmsConnect = new DBMSConnection("jdbc:mysql://localhost:3306/shopease", "root", "");
         Connection con = dbmsConnect.getConnection();
-        PreparedStatement stmt = con.prepareStatement("SELECT EMAIL, PASSWORD FROM "+table);
+
+
+        String query = "SELECT EMAIL, PHONE, PASSWRD FROM " + table + " WHERE (EMAIL = ? OR PHONE = ?)";
+        PreparedStatement stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        stmt.setString(1, userId);
+        stmt.setString(2, userId);
+
+
         ResultSet rs = stmt.executeQuery();
 
-        boolean match=false;
-        while (rs.next()) {
-            String dbID = rs.getString("EMAIL");
-            String dbPassword = rs.getString("PASSWORD");
-            if(dbID.equals(userId))
-                if(dbPassword.equals(password)){
-                    match= true;
-                    break;
-                }
 
+        boolean match = false;
+        if (rs.next()) {
+//            rs.previous();
+            String dbPassword = rs.getString("PASSWRD");
 
+            if (dbPassword.equals(password)) {
+                match = true;
+                System.out.println("Matched successfully.");
+            }
         }
 
+
         rs.close();
-        dbmsConnect.closeConnection(con,stmt);
+        dbmsConnect.closeConnection(con, stmt);
 
         return match;
     }
 
-    }
+
+}

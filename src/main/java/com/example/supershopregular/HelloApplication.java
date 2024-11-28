@@ -9,13 +9,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
-    private Scene scene;
+    public static Scene scene;
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("hello-view"));
         stage.setTitle("ShopEase");
-        stage.setHeight(820);
-        stage.setWidth(1550);
+        stage.setHeight(400);
+        stage.setWidth(650);
 //        stage.setFullScreen(true);
         stage.setScene(scene);
         stage.show();
