@@ -30,8 +30,8 @@ public class Home {
         // Handle other actions similarly
         stage = new Stage();
         scene = new Scene(loadFXML("CManagerLogin"));
-        stage.setHeight(340);
-        stage.setWidth(560);
+        stage.setHeight(1040);
+        stage.setWidth(960);
         stage.setScene(scene);
         stage.show();
     }

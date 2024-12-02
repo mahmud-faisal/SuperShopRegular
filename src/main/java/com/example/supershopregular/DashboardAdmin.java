@@ -8,6 +8,11 @@ import java.io.IOException;
 import static com.example.supershopregular.HelloApplication.loadFXML;
 import static com.example.supershopregular.HelloApplication.scene;
 
-public class Dashboard {
+public class DashboardAdmin {
+    @FXML
+    public void onClickCmanager(ActionEvent event) throws IOException {
+        System.out.println("Clicked on C Manager");
+        scene.setRoot(loadFXML("showCmanagerList"));
+    }
 
 }

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="1226.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="1226.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.supershopregular.ShowCmanagerList">
    <top>
       <BorderPane prefHeight="77.0" prefWidth="600.0" style="-fx-background-color: #4CAF50;" BorderPane.alignment="CENTER">
          <left>
@@ -62,7 +62,7 @@
                   <Insets bottom="30.0" top="20.0" />
                </VBox.margin>
             </Label>
-            <TableView prefHeight="200.0" prefWidth="1055.0">
+            <TableView fx:id="cmanagerTable" prefHeight="200.0" prefWidth="1055.0">
               <columns>
                 <TableColumn fx:id="cmId" prefWidth="60.0" text="ID" />
                 <TableColumn fx:id="cmName" prefWidth="200.0" text="Name" />
@@ -70,7 +70,7 @@
                   <TableColumn fx:id="cmAddress" prefWidth="289.5999755859375" text="Address" />
                   <TableColumn fx:id="cmPhone" prefWidth="132.00006103515625" text="Phone" />
                   <TableColumn fx:id="cmEmail" prefWidth="239.99993896484375" text="Email" />
-                  <TableColumn prefWidth="151.2000732421875" text="Ops" />
+                  <TableColumn fx:id="operations" prefWidth="151.2000732421875" text="Ops" />
               </columns>
             </TableView>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">

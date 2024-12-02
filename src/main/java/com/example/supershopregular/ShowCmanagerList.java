@@ -1,47 +1,77 @@
 package com.example.supershopregular;
 
 import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
+
+import backend.RetrieveCManager;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 
-public class ShowCmanagerList {
+public class ShowCmanagerList implements Initializable {
+
 
         @FXML
         private ResourceBundle resources;
 
         @FXML
         private URL location;
+        @FXML
+        private TableView<Cmanager> cmanagerTable;
+        @FXML
+        private TableColumn< Cmanager, String> cmAddress;
 
         @FXML
-        private TableColumn< ?, ?> cmAddress;
+        private TableColumn<Cmanager, String> cmEmail;
 
         @FXML
-        private TableColumn<?, ?> cmEmail;
+        private TableColumn<Cmanager, Integer> cmId;
 
         @FXML
-        private TableColumn<?, ?> cmId;
+        private TableColumn<Cmanager, String> cmNID;
 
         @FXML
-        private TableColumn<?, ?> cmNID;
+        private TableColumn<Cmanager, String> cmName;
 
         @FXML
-        private TableColumn<?, ?> cmName;
+        private TableColumn<Cmanager, String> cmPhone;
 
-        @FXML
-        private TableColumn<?, ?> cmPhone;
+    @FXML
+    private TableColumn<Cmanager, Date> cmDob;
 
-        @FXML
-        void initialize() {
-            assert cmAddress != null : "fx:id=\"cmAddress\" was not injected: check your FXML file 'showCmanagerList.fxml'.";
-            assert cmEmail != null : "fx:id=\"cmEmail\" was not injected: check your FXML file 'showCmanagerList.fxml'.";
-            assert cmId != null : "fx:id=\"cmId\" was not injected: check your FXML file 'showCmanagerList.fxml'.";
-            assert cmNID != null : "fx:id=\"cmNID\" was not injected: check your FXML file 'showCmanagerList.fxml'.";
-            assert cmName != null : "fx:id=\"cmName\" was not injected: check your FXML file 'showCmanagerList.fxml'.";
-            assert cmPhone != null : "fx:id=\"cmPhone\" was not injected: check your FXML file 'showCmanagerList.fxml'.";
+    @FXML
+    private TableColumn<Cmanager, Timestamp> cmJoiningDate;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        cmId.setCellValueFactory(new PropertyValueFactory<>("cmId"));
+        cmName.setCellValueFactory(new PropertyValueFactory<>("name"));
+//        cmDob.setCellValueFactory(new PropertyValueFactory<>("dob")); // Add DOB
+        cmNID.setCellValueFactory(new PropertyValueFactory<>("nid"));
+        cmPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        cmEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        cmAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+//        cmJoiningDate.setCellValueFactory(new PropertyValueFactory<>("joiningDate")); // Add Joining Date
+
+        // Fetch data and populate TableView
+        RetrieveCManager retrieveCManager = new RetrieveCManager();
+        ObservableList<Cmanager> cmanagerList;
+        try {
+            cmanagerList = retrieveCManager.getCManagers();
+            cmanagerTable.setItems(cmanagerList);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
+
+
+        cmanagerTable.setItems(cmanagerList);
+    }
 
 
 
