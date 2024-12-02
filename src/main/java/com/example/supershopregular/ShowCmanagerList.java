@@ -1,5 +1,6 @@
 package com.example.supershopregular;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -8,10 +9,14 @@ import java.util.ResourceBundle;
 
 import backend.RetrieveCManager;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import static com.example.supershopregular.HelloApplication.loadFXML;
+import static com.example.supershopregular.HelloApplication.scene;
 
 
 public class ShowCmanagerList implements Initializable {
@@ -73,6 +78,11 @@ public class ShowCmanagerList implements Initializable {
         cmanagerTable.setItems(cmanagerList);
     }
 
+    @FXML
+    public void onClickBackHome(ActionEvent event) throws IOException {
+
+        scene.setRoot(loadFXML("DashboardAdmin"));
+    }
 
 
 }

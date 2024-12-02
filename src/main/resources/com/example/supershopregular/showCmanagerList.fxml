@@ -86,7 +86,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="485.0" layoutY="39.0" mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: #007BFF; -fx-font-weight: bold;" text="Go Back Home">
+                  <Button layoutX="485.0" layoutY="39.0" mnemonicParsing="false" onAction="#onClickBackHome" style="-fx-background-radius: 5; -fx-background-color: #007BFF; -fx-font-weight: bold;" text="Go Back Home">
                      <font>
                         <Font size="15.0" />
                      </font>
