@@ -70,7 +70,7 @@
                   <TableColumn fx:id="cmAddress" prefWidth="289.5999755859375" text="Address" />
                   <TableColumn fx:id="cmPhone" prefWidth="132.00006103515625" text="Phone" />
                   <TableColumn fx:id="cmEmail" prefWidth="239.99993896484375" text="Email" />
-                  <TableColumn fx:id="operations" prefWidth="151.2000732421875" text="Ops" />
+                  <TableColumn fx:id="ops" prefWidth="151.2000732421875" text="Ops" />
               </columns>
             </TableView>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
