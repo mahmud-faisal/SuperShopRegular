@@ -2,12 +2,11 @@ package com.example.supershopregular;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.ResourceBundle;
 
-import backend.RetrieveCManager;
+import backend.RetrieveProducts;
+import backend.RetrieveTransaction;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,67 +14,47 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
-
 import static com.example.supershopregular.HelloApplication.loadFXML;
 import static com.example.supershopregular.HelloApplication.scene;
 
-public class ShowCmanagerList implements Initializable {
+public class TransactionDetails implements Initializable{
+    @FXML
+    private TableView<Transaction> transactionTable;
+    @FXML
+    private TableColumn<Transaction, Integer> cID;
 
     @FXML
-    private ResourceBundle resources;
+    private TableColumn<Transaction, Void> ops;
 
     @FXML
-    private URL location;
+    private TableColumn<Transaction, Double> tAmount;
 
     @FXML
-    private TableView<Cmanager> cmanagerTable;
+    private TableColumn<Transaction, Timestamp> tDate;
 
     @FXML
-    private TableColumn<Cmanager, String> cmAddress;
+    private TableColumn<Transaction, Integer> tID;
 
     @FXML
-    private TableColumn<Cmanager, String> cmEmail;
+    private TableColumn<Transaction, String> tRemark;
 
-    @FXML
-    private TableColumn<Cmanager, Integer> cmId;
-
-    @FXML
-    private TableColumn<Cmanager, String> cmNID;
-
-    @FXML
-    private TableColumn<Cmanager, String> cmName;
-
-    @FXML
-    private TableColumn<Cmanager, String> cmPhone;
-
-    @FXML
-    private TableColumn<Cmanager, Void> ops;
-
-    @FXML
-    private TableColumn<Cmanager, Date> cmDob;
-
-    @FXML
-    private TableColumn<Cmanager, Timestamp> cmJoiningDate;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cmId.setCellValueFactory(new PropertyValueFactory<>("cmId"));
-        cmName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        cmNID.setCellValueFactory(new PropertyValueFactory<>("nid"));
-        cmPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
-        cmEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        cmAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        tID.setCellValueFactory(new PropertyValueFactory<>("transactionId"));
+        cID.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+        tDate.setCellValueFactory(new PropertyValueFactory<>("transactionDate"));
+        tRemark.setCellValueFactory(new PropertyValueFactory<>("remark"));
+        tAmount.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
 
-        // Fetch data and populate TableView
-        RetrieveCManager retrieveCManager = new RetrieveCManager();
-        ObservableList<Cmanager> cmanagerList;
+        RetrieveTransaction retrieveTransaction = new RetrieveTransaction();
+        ObservableList<Transaction> transactionList;
         try {
-            cmanagerList = retrieveCManager.getCManagers();
-            cmanagerTable.setItems(cmanagerList);
+            transactionList = retrieveTransaction.getTransactions();
+            transactionTable.setItems(transactionList);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
         // Add Edit/Delete buttons in the 'ops' column
         ops.setCellFactory(param -> new TableCell<>() {
             private final Button editButton = new Button("Update");
@@ -87,12 +66,12 @@ public class ShowCmanagerList implements Initializable {
                 editButton.setStyle("-fx-background-color: green; -fx-text-fill: white;-fx-cursor:hand;-fx-font-weight:bold");
                 deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;-fx-cursor:hand;-fx-font-weight:bold");
                 editButton.setOnAction(event -> {
-                    Cmanager selected = getTableView().getItems().get(getIndex());
+                    Transaction selected = getTableView().getItems().get(getIndex());
                     handleEdit(selected);
                 });
 
                 deleteButton.setOnAction(event -> {
-                    Cmanager selected = getTableView().getItems().get(getIndex());
+                    Transaction selected = getTableView().getItems().get(getIndex());
                     handleDelete(selected);
                 });
             }
@@ -109,17 +88,16 @@ public class ShowCmanagerList implements Initializable {
         });
     }
 
-    // Define the edit action
     @FXML
-    public void handleEdit(Cmanager cmanager) {
-        System.out.println("Edit clicked for: " + cmanager.getName());
+    public void handleEdit(Transaction transaction) {
+        System.out.println("Edit clicked for: " + transaction.getTransactionId());
         // Implement your edit logic
     }
 
     // Define the delete action
     @FXML
-    public void handleDelete(Cmanager cmanager) {
-        System.out.println("Delete clicked for: " + cmanager.getName());
+    public void handleDelete(Transaction transaction) {
+        System.out.println("Delete clicked for: " + transaction.getTransactionId());
         // Implement your delete logic
     }
 

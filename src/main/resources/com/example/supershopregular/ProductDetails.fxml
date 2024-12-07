@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="1226.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.supershopregular.ProductDetails">
+    <top>
+        <BorderPane prefHeight="77.0" prefWidth="600.0" style="-fx-background-color: #4CAF50;" BorderPane.alignment="CENTER">
+            <left>
+                <HBox alignment="CENTER" prefHeight="78.0" prefWidth="191.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="34.0" prefWidth="126.0" text="ShopEase" textFill="#343a40">
+                            <font>
+                                <Font name="Bauhaus 93" size="30.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+            </left>
+            <right>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <ImageView fitHeight="19.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/userHeadIcon.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets right="5.0" />
+                            </HBox.margin>
+                        </ImageView>
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" text="Kazi Faisal Mahmud" textFill="#343a40">
+                            <font>
+                                <Font name="Candara Bold" size="14.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Label>
+                    </children>
+                </HBox>
+            </right>
+        </BorderPane>
+    </top>
+    <center>
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" text="Products Details" textFill="#343a40">
+                    <font>
+                        <Font name="System Bold" size="23.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="30.0" top="20.0" />
+                    </VBox.margin>
+                </Label>
+                <TableView fx:id="productTable" prefHeight="432.0" prefWidth="1226.0">
+                    <columns>
+                        <TableColumn fx:id="pID" prefWidth="60.0" text="ID" />
+                        <TableColumn fx:id="pName" prefWidth="170.3999900817871" text="Name" />
+                        <TableColumn fx:id="pCategory" prefWidth="136.8000030517578" text="Category" />
+                        <TableColumn fx:id="pBrand" prefWidth="132.800048828125" text="Brand" />
+                        <TableColumn fx:id="pDesc" prefWidth="266.39996337890625" text="Description" />
+                        <TableColumn fx:id="pPrice" prefWidth="77.60003662109375" text="Unit Price" />
+                  <TableColumn fx:id="pStock" prefWidth="68.79998779296875" text="In Stock" />
+                  <TableColumn fx:id="pExpire" prefWidth="122.39990234375" text="Expire Date" />
+                        <TableColumn fx:id="ops" prefWidth="188.800048828125" text="Ops" />
+                    </columns>
+                </TableView>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: #007BFF; -fx-font-weight: bold;" text="Add New">
+                            <font>
+                                <Font size="15.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+                            </padding>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                        <Button layoutX="485.0" layoutY="39.0" mnemonicParsing="false" onAction="#onClickBackHome" style="-fx-background-radius: 5; -fx-background-color: #007BFF; -fx-font-weight: bold;" text="Go Back Home">
+                            <font>
+                                <Font size="15.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+                            </padding>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <HBox.margin>
+                                <Insets left="40.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>

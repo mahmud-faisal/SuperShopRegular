@@ -1,20 +1,12 @@
 package com.example.supershopregular;
 
+import java.sql.Timestamp;
+
 public class Customer {
     int customerID;
-    String cFirstName,cLastName,cEmail,cPhone, cAddress,cRegDate;
+    String cFirstName,cLastName,cEmail,cPhone, cAddress;
     double totalSpend;
-
-    public Customer(int customerID, String cFirstName, String cLastName, String cEmail, String cPhone, String cAddress, String cRegDate, double totalSpend) {
-        this.customerID = customerID;
-        this.cFirstName = cFirstName;
-        this.cLastName = cLastName;
-        this.cEmail = cEmail;
-        this.cPhone = cPhone;
-        this.cAddress = cAddress;
-        this.cRegDate = cRegDate;
-        this.totalSpend = totalSpend;
-    }
+    private Timestamp cRegDate;
 
     public int getCustomerID() {
         return customerID;
@@ -24,52 +16,44 @@ public class Customer {
         this.customerID = customerID;
     }
 
-    public String getcFirstName() {
+    public String getCFirstName() {
         return cFirstName;
     }
 
-    public void setcFirstName(String cFirstName) {
+    public void setCFirstName(String cFirstName) {
         this.cFirstName = cFirstName;
     }
 
-    public String getcLastName() {
+    public String getCLastName() {
         return cLastName;
     }
 
-    public void setcLastName(String cLastName) {
+    public void setCLastName(String cLastName) {
         this.cLastName = cLastName;
     }
 
-    public String getcEmail() {
+    public String getCEmail() {
         return cEmail;
     }
 
-    public void setcEmail(String cEmail) {
+    public void setCEmail(String cEmail) {
         this.cEmail = cEmail;
     }
 
-    public String getcPhone() {
+    public String getCPhone() {
         return cPhone;
     }
 
-    public void setcPhone(String cPhone) {
+    public void setCPhone(String cPhone) {
         this.cPhone = cPhone;
     }
 
-    public String getcAddress() {
+    public String getCAddress() {
         return cAddress;
     }
 
-    public void setcAddress(String cAddress) {
+    public void setCAddress(String cAddress) {
         this.cAddress = cAddress;
-    }
-
-    public String getcRegDate() {
-        return cRegDate;
-    }
-
-    public void setcRegDate(String cRegDate) {
-        this.cRegDate = cRegDate;
     }
 
     public double getTotalSpend() {
@@ -79,4 +63,25 @@ public class Customer {
     public void setTotalSpend(double totalSpend) {
         this.totalSpend = totalSpend;
     }
+
+    public Timestamp getCRegDate() {
+        return cRegDate;
+    }
+
+    public void setCRegDate(Timestamp cRegDate) {
+        this.cRegDate = cRegDate;
+    }
+
+    public Customer(int customerID, String cFirstName, String cLastName, String cEmail, String cPhone, String cAddress, Timestamp cRegDate, double totalSpend) {
+        this.customerID = customerID;
+        this.cFirstName = cFirstName;
+        this.cLastName = cLastName;
+        this.cEmail = cEmail;
+        this.cPhone = cPhone;
+        this.cAddress = cAddress;
+        this.cRegDate = cRegDate;
+        this.totalSpend = totalSpend;
+    }
+
+
 }

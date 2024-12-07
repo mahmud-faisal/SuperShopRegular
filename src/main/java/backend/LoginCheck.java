@@ -10,6 +10,7 @@ import java.sql.SQLException;
 public class LoginCheck {
     private String userId;
     private String password;
+    public static String accountName;
     public LoginCheck(String userId,String password) {
         this.userId = userId;
         this.password = password;
@@ -24,7 +25,7 @@ public class LoginCheck {
         Connection con = dbmsConnect.getConnection();
 
 
-        String query = "SELECT EMAIL, PHONE, PASSWRD FROM " + table + " WHERE (EMAIL = ? OR PHONE = ?)";
+        String query = "SELECT NAME, EMAIL, PHONE, PASSWRD FROM " + table + " WHERE (EMAIL = ? OR PHONE = ?)";
         PreparedStatement stmt = con.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         stmt.setString(1, userId);
         stmt.setString(2, userId);
@@ -40,6 +41,7 @@ public class LoginCheck {
 
             if (dbPassword.equals(password)) {
                 match = true;
+                accountName = rs.getString("NAME");
                 System.out.println("Matched successfully.");
             }
         }

@@ -2,12 +2,11 @@ package com.example.supershopregular;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 import backend.RetrieveCManager;
+import backend.RetrieveProducts;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,67 +14,59 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
-
 import static com.example.supershopregular.HelloApplication.loadFXML;
 import static com.example.supershopregular.HelloApplication.scene;
 
-public class ShowCmanagerList implements Initializable {
+
+public class ProductDetails implements Initializable {
+    @FXML
+    private TableView<Products> productTable;
 
     @FXML
-    private ResourceBundle resources;
+    private TableColumn<Products, String> pBrand;
 
     @FXML
-    private URL location;
+    private TableColumn<Products, String> pCategory;
 
     @FXML
-    private TableView<Cmanager> cmanagerTable;
+    private TableColumn<Products, String> pDesc;
 
     @FXML
-    private TableColumn<Cmanager, String> cmAddress;
+    private TableColumn<Products, Timestamp> pExpire;
 
     @FXML
-    private TableColumn<Cmanager, String> cmEmail;
+    private TableColumn<Products, Integer> pID;
 
     @FXML
-    private TableColumn<Cmanager, Integer> cmId;
+    private TableColumn<Products, String> pName;
 
     @FXML
-    private TableColumn<Cmanager, String> cmNID;
+    private TableColumn<Products, Double> pPrice;
 
     @FXML
-    private TableColumn<Cmanager, String> cmName;
+    private TableColumn<Products, Integer> pStock;
 
     @FXML
-    private TableColumn<Cmanager, String> cmPhone;
-
-    @FXML
-    private TableColumn<Cmanager, Void> ops;
-
-    @FXML
-    private TableColumn<Cmanager, Date> cmDob;
-
-    @FXML
-    private TableColumn<Cmanager, Timestamp> cmJoiningDate;
-
+    private TableColumn<Products, Void> ops;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cmId.setCellValueFactory(new PropertyValueFactory<>("cmId"));
-        cmName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        cmNID.setCellValueFactory(new PropertyValueFactory<>("nid"));
-        cmPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
-        cmEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        cmAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        pID.setCellValueFactory(new PropertyValueFactory<>("pID"));
+        pName.setCellValueFactory(new PropertyValueFactory<>("pName"));
+        pDesc.setCellValueFactory(new PropertyValueFactory<>("pDesc"));
+        pStock.setCellValueFactory(new PropertyValueFactory<>("quanityStock"));
+        pCategory.setCellValueFactory(new PropertyValueFactory<>("pCategory"));
+        pBrand.setCellValueFactory(new PropertyValueFactory<>("pBrand"));
+        pPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        pExpire.setCellValueFactory(new PropertyValueFactory<>("pExpireDate"));
 
-        // Fetch data and populate TableView
-        RetrieveCManager retrieveCManager = new RetrieveCManager();
-        ObservableList<Cmanager> cmanagerList;
+        RetrieveProducts retrieveProducts = new RetrieveProducts();
+        ObservableList<Products> productList;
         try {
-            cmanagerList = retrieveCManager.getCManagers();
-            cmanagerTable.setItems(cmanagerList);
+            productList = retrieveProducts.getProducts();
+            productTable.setItems(productList);
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
         // Add Edit/Delete buttons in the 'ops' column
         ops.setCellFactory(param -> new TableCell<>() {
             private final Button editButton = new Button("Update");
@@ -87,12 +78,12 @@ public class ShowCmanagerList implements Initializable {
                 editButton.setStyle("-fx-background-color: green; -fx-text-fill: white;-fx-cursor:hand;-fx-font-weight:bold");
                 deleteButton.setStyle("-fx-background-color: red; -fx-text-fill: white;-fx-cursor:hand;-fx-font-weight:bold");
                 editButton.setOnAction(event -> {
-                    Cmanager selected = getTableView().getItems().get(getIndex());
+                    Products selected = getTableView().getItems().get(getIndex());
                     handleEdit(selected);
                 });
 
                 deleteButton.setOnAction(event -> {
-                    Cmanager selected = getTableView().getItems().get(getIndex());
+                    Products selected = getTableView().getItems().get(getIndex());
                     handleDelete(selected);
                 });
             }
@@ -111,15 +102,15 @@ public class ShowCmanagerList implements Initializable {
 
     // Define the edit action
     @FXML
-    public void handleEdit(Cmanager cmanager) {
-        System.out.println("Edit clicked for: " + cmanager.getName());
+    public void handleEdit(Products product) {
+        System.out.println("Edit clicked for: " + product.getPName());
         // Implement your edit logic
     }
 
     // Define the delete action
     @FXML
-    public void handleDelete(Cmanager cmanager) {
-        System.out.println("Delete clicked for: " + cmanager.getName());
+    public void handleDelete(Products product) {
+        System.out.println("Delete clicked for: " + product.getPName());
         // Implement your delete logic
     }
 
@@ -127,4 +118,4 @@ public class ShowCmanagerList implements Initializable {
     public void onClickBackHome(ActionEvent event) throws IOException {
         scene.setRoot(loadFXML("DashboardAdmin"));
     }
-}
+    }

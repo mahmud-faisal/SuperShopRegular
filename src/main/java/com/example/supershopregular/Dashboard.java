@@ -9,5 +9,14 @@ import static com.example.supershopregular.HelloApplication.loadFXML;
 import static com.example.supershopregular.HelloApplication.scene;
 
 public class Dashboard {
-
+    @FXML
+    public void onClickProducts(ActionEvent event) throws IOException {
+        System.out.println("Clicked on Product Detail");
+        scene.setRoot(loadFXML("ProductDetails"));
+    }
+    @FXML
+    public void onClickTransaction(ActionEvent event) throws IOException {
+        System.out.println("Clicked on Product Detail");
+        scene.setRoot(loadFXML("TransactionDetails"));
+    }
 }

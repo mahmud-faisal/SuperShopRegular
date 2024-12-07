@@ -1,12 +1,15 @@
 package com.example.supershopregular;
 
+import java.sql.Timestamp;
+
 public class Transaction {
     int transactionId,customerId;
-    String transactionDate,remark;
+    String remark;
+    Timestamp transactionDate;
     double totalAmount;
 
 
-    public Transaction(int transactionId, int customerId, String transactionDate, String remark, double totalAmount) {
+    public Transaction(int transactionId, int customerId, Timestamp transactionDate, String remark, double totalAmount) {
         this.transactionId = transactionId;
         this.customerId = customerId;
         this.transactionDate = transactionDate;
@@ -30,11 +33,11 @@ public class Transaction {
         this.customerId = customerId;
     }
 
-    public String getTransactionDate() {
+    public Timestamp getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(String transactionDate) {
+    public void setTransactionDate(Timestamp transactionDate) {
         this.transactionDate = transactionDate;
     }
 

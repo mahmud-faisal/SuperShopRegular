@@ -1,11 +1,16 @@
 package com.example.supershopregular;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 public class Products {
 int pID,quanityStock,supplierId;
 double price;
-String pName,pCategory,pBrand,pDesc,pExpireDate,pAddedDate;
+String pName,pCategory,pBrand,pDesc;
+Date pExpireDate;
+Timestamp pAddedDate;
 
-    public Products(int pID, int quanityStock, int supplierId, double price, String pName, String pCategory, String pBrand, String pDesc, String pExpireDate, String pAddedDate) {
+    public Products(int pID, int quanityStock, int supplierId, double price, String pName, String pCategory, String pBrand, String pDesc, Date pExpireDate, Timestamp pAddedDate) {
         this.pID = pID;
         this.quanityStock = quanityStock;
         this.supplierId = supplierId;
@@ -18,11 +23,11 @@ String pName,pCategory,pBrand,pDesc,pExpireDate,pAddedDate;
         this.pAddedDate = pAddedDate;
     }
 
-    public int getpID() {
+    public int getPID() {
         return pID;
     }
 
-    public void setpID(int pID) {
+    public void setPID(int pID) {
         this.pID = pID;
     }
 
@@ -50,51 +55,51 @@ String pName,pCategory,pBrand,pDesc,pExpireDate,pAddedDate;
         this.price = price;
     }
 
-    public String getpName() {
+    public String getPName() {
         return pName;
     }
 
-    public void setpName(String pName) {
+    public void setPName(String pName) {
         this.pName = pName;
     }
 
-    public String getpCategory() {
+    public String getPCategory() {
         return pCategory;
     }
 
-    public void setpCategory(String pCategory) {
+    public void setPCategory(String pCategory) {
         this.pCategory = pCategory;
     }
 
-    public String getpBrand() {
+    public String getPBrand() {
         return pBrand;
     }
 
-    public void setpBrand(String pBrand) {
+    public void setPBrand(String pBrand) {
         this.pBrand = pBrand;
     }
 
-    public String getpDesc() {
+    public String getPDesc() {
         return pDesc;
     }
 
-    public void setpDesc(String pDesc) {
+    public void setPDesc(String pDesc) {
         this.pDesc = pDesc;
     }
 
-    public String getpExpireDate() {
+    public Date getPExpireDate() {
         return pExpireDate;
     }
 
-    public void setpExpireDate(String pExpireDate) {
+    public void setPExpireDate(Date pExpireDate) {
         this.pExpireDate = pExpireDate;
     }
 
-    public String getpAddedDate() {
+    public Timestamp getPAddedDate() {
         return pAddedDate;
     }
 
-    public void setpAddedDate(String pAddedDate) {
+    public void setPAddedDate(Timestamp pAddedDate) {
         this.pAddedDate = pAddedDate;
     }
 }

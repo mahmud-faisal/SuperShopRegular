@@ -37,7 +37,7 @@
                                 <Insets right="5.0" />
                             </HBox.margin>
                         </ImageView>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" text="Kazi Faisal Mahmud" textFill="#343a40">
+                        <Label fx:id="accountHolder" alignment="TOP_LEFT" contentDisplay="CENTER" textFill="#343a40">
                             <font>
                                 <Font name="Candara Bold" size="14.0" />
                             </font>
@@ -211,7 +211,7 @@
                         <Insets right="10.0" />
                      </FlowPane.margin>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-radius: 20;">
+                  <Button mnemonicParsing="false" onAction="#onClickTransaction" style="-fx-background-radius: 20;">
                      <graphic>
                               <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="420.0" style="-fx-background-color: #49d1bf; -fx-background-radius: 20;">
                                   <children>
@@ -241,7 +241,7 @@
                         <Insets left="10.0" right="10.0" />
                      </FlowPane.margin>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-radius: 20;">
+                  <Button mnemonicParsing="false" onAction="#onClickCustomer" style="-fx-background-radius: 20;">
                      <graphic>
                         <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="420.0" style="-fx-background-color: #f73e69; -fx-background-radius: 20;">
                            <children>
