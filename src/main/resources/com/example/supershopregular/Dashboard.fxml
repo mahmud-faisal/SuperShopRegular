@@ -245,7 +245,7 @@
                                     <Image url="@images/add_business_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" />
                                  </image>
                               </ImageView>
-                              <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="42.0" prefWidth="179.0" style="-fx-background-radius: 20; -fx-font-weight: bold;" text="Add New Product" textAlignment="CENTER" textFill="WHITESMOKE">
+                              <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="42.0" prefWidth="179.0" style="-fx-background-radius: 20; -fx-font-weight: bold;" text="Products" textAlignment="CENTER" textFill="WHITESMOKE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -254,11 +254,11 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                           <padding>
-                              <Insets top="-1.0" />
-                           </padding>
                         </VBox>
                      </graphic>
+                     <padding>
+                        <Insets top="-1.0" />
+                     </padding>
                   </Button>
                </children>
                <padding>

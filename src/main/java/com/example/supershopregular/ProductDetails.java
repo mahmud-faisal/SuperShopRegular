@@ -5,15 +5,19 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
+import backend.RemoveEntity;
 import backend.RetrieveCManager;
 import backend.RetrieveProducts;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
 import static com.example.supershopregular.HelloApplication.loadFXML;
 import static com.example.supershopregular.HelloApplication.scene;
 
@@ -111,11 +115,33 @@ public class ProductDetails implements Initializable {
     @FXML
     public void handleDelete(Products product) {
         System.out.println("Delete clicked for: " + product.getPName());
-        // Implement your delete logic
+        RemoveEntity removeEty = new RemoveEntity();
+        removeEty.removeEntity(product.pID, "productID", "products");
+        Stage nstage = new Stage();
+        Scene nscene = null;
+        try {
+            nscene = new Scene(loadFXML("RemoveConfirmation"));
+        } catch (Exception _) {
+        }
+        nstage.setScene(nscene);
+        nstage.show();
     }
 
     @FXML
     public void onClickBackHome(ActionEvent event) throws IOException {
         scene.setRoot(loadFXML("DashboardAdmin"));
+    } @FXML
+    public void onClickRefresh(ActionEvent event) throws IOException {
+        scene.setRoot(loadFXML("ProductDetails"));
+    }
+    @FXML
+    public void onClickAddProduct(ActionEvent event) throws IOException {
+        System.out.println("Clicked on Add Product");
+        Stage stage = new Stage();
+        Scene newScene = new Scene(loadFXML("AddProduct"));
+        stage.setHeight(640);
+        stage.setWidth(560);
+        stage.setScene(newScene);
+        stage.show();
     }
     }

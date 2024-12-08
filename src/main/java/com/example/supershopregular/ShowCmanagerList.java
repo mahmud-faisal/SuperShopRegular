@@ -12,9 +12,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 import static com.example.supershopregular.HelloApplication.loadFXML;
 import static com.example.supershopregular.HelloApplication.scene;
@@ -126,5 +128,15 @@ public class ShowCmanagerList implements Initializable {
     @FXML
     public void onClickBackHome(ActionEvent event) throws IOException {
         scene.setRoot(loadFXML("DashboardAdmin"));
+    }
+    @FXML
+    public void onClickAddCM(ActionEvent event) throws IOException {
+        System.out.println("Clicked on CM");
+        Stage stage = new Stage();
+        Scene newScene = new Scene(loadFXML("AddCManager"));
+        stage.setHeight(640);
+        stage.setWidth(560);
+        stage.setScene(newScene);
+        stage.show();
     }
 }

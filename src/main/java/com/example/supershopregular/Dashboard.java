@@ -2,6 +2,8 @@ package com.example.supershopregular;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -19,4 +21,5 @@ public class Dashboard {
         System.out.println("Clicked on Product Detail");
         scene.setRoot(loadFXML("TransactionDetails"));
     }
+
 }

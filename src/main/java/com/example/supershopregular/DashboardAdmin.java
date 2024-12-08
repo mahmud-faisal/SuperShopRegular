@@ -18,6 +18,11 @@ public class DashboardAdmin {
 
 
 
+    @FXML
+    public void onClickProducts(ActionEvent event) throws IOException {
+        System.out.println("Clicked on Product Detail");
+        scene.setRoot(loadFXML("ProductDetails"));
+    }
 
     @FXML
     public void onClickCmanager(ActionEvent event) throws IOException {

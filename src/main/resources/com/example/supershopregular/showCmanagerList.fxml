@@ -75,7 +75,7 @@
             </TableView>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: #007BFF; -fx-font-weight: bold;" text="Add New">
+                  <Button mnemonicParsing="false" onAction="#onClickAddCM" style="-fx-background-radius: 5; -fx-background-color: #007BFF; -fx-font-weight: bold;" text="Add New">
                      <font>
                         <Font size="15.0" />
                      </font>
