@@ -37,7 +37,7 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label fx:id="accountHolderName" alignment="TOP_LEFT" contentDisplay="CENTER" text="Kazi Faisal Mahmud" textFill="#343a40">
+                  <Label fx:id="accountHolder" alignment="TOP_LEFT" contentDisplay="CENTER" textFill="#343a40">
                      <font>
                         <Font name="Candara Bold" size="14.0" />
                      </font>

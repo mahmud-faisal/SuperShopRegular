@@ -1,14 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.supershopregular.EditCManager"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="623.0" prefWidth="600.0" style="-fx-background-color: #F7F7F7;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.supershopregular.AddCManager">
+    <children>
+        <Label contentDisplay="CENTER" text="New Customer Manager Information" textAlignment="CENTER" textFill="#007bff">
+            <VBox.margin>
+                <Insets bottom="30.0" />
+            </VBox.margin>
+            <font>
+                <Font name="SansSerif Regular" size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="paID1" layoutX="163.0" layoutY="235.0" prefHeight="15.0" prefWidth="342.0" text="Name" textAlignment="CENTER" textFill="#343a40">
+            <font>
+                <Font name="SansSerif Bold" size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="5.0" />
+            </VBox.margin>
+        </Label>
+        <TextField fx:id="naName" layoutX="163.0" layoutY="258.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="343.0" promptText=" ">
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor>
+        </TextField>
+        <Label fx:id="paID11" layoutX="163.0" layoutY="239.0" prefHeight="15.0" prefWidth="342.0" text="NID" textAlignment="CENTER" textFill="#343a40">
+            <font>
+                <Font name="SansSerif Bold" size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="5.0" top="5.0" />
+            </VBox.margin>
+        </Label>
+        <TextField fx:id="naNID" layoutX="163.0" layoutY="254.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="344.0" promptText=" ">
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor>
+        </TextField>
+        <Label fx:id="paID112" layoutX="139.0" layoutY="164.0" prefHeight="15.0" prefWidth="342.0" text="Date of Birth" textAlignment="CENTER" textFill="#343a40">
+            <font>
+                <Font name="SansSerif Bold" size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="5.0" top="5.0" />
+            </VBox.margin>
+        </Label>
+        <DatePicker fx:id="naDOB" prefHeight="26.0" prefWidth="347.0" />
+        <Label fx:id="paID111" layoutX="163.0" layoutY="268.0" prefHeight="15.0" prefWidth="350.0" text="Phone" textAlignment="CENTER" textFill="#343a40">
+            <font>
+                <Font name="SansSerif Bold" size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="5.0" top="5.0" />
+            </VBox.margin>
+        </Label>
+        <TextField fx:id="naPhone" layoutX="163.0" layoutY="288.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="345.0" promptText=" ">
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor>
+        </TextField>
+        <Label fx:id="paID1112" layoutX="135.0" layoutY="213.0" prefHeight="15.0" prefWidth="350.0" text="Email" textAlignment="CENTER" textFill="#343a40">
+            <font>
+                <Font name="SansSerif Bold" size="12.0" />
+            </font>
+        </Label>
+        <TextField fx:id="naEmail" layoutX="137.0" layoutY="233.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="345.0" promptText=" ">
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor>
+        </TextField>
+        <Label fx:id="paID1111" layoutX="163.0" layoutY="300.0" prefHeight="15.0" prefWidth="346.0" text="Address" textAlignment="CENTER" textFill="#343a40">
+            <font>
+                <Font name="SansSerif Bold" size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="5.0" top="5.0" />
+            </VBox.margin>
+        </Label>
+        <TextField fx:id="naAddress" layoutX="163.0" layoutY="276.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="64.0" prefWidth="346.0" promptText=" ">
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor>
+        </TextField>
+        <Label fx:id="paID11121" layoutX="135.0" layoutY="287.0" prefHeight="15.0" prefWidth="350.0" text="Password" textAlignment="CENTER" textFill="#343a40">
+            <font>
+                <Font name="SansSerif Bold" size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="5.0" top="5.0" />
+            </VBox.margin>
+        </Label>
+        <TextField fx:id="naPassword" layoutX="137.0" layoutY="302.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="345.0" promptText=" ">
+            <cursor>
+                <Cursor fx:constant="TEXT" />
+            </cursor>
+        </TextField>
+        <Label fx:id="wrongAlert" layoutX="163.0" layoutY="216.0" prefHeight="15.0" prefWidth="349.0" textAlignment="CENTER" textFill="#0cc71e">
+            <font>
+                <Font name="SansSerif Bold" size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets top="5.0" />
+            </VBox.margin>
+        </Label>
+        <Button mnemonicParsing="false" onAction="#handleAddProduct" prefHeight="42.0" prefWidth="316.0" style="-fx-background-color: #4CAF50; -fx-background-radius: 25;" text="Assign Customer Manager" textFill="WHITE">
+            <VBox.margin>
+                <Insets top="10.0" />
+            </VBox.margin>
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+            <padding>
+                <Insets bottom="10.0" left="40.0" right="40.0" top="10.0" />
+            </padding>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+    </children>
+</VBox>

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
+import backend.RemoveEntity;
 import backend.RetrieveCManager;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -112,17 +113,39 @@ public class ShowCmanagerList implements Initializable {
     }
 
     // Define the edit action
+    static int dataGur;
     @FXML
     public void handleEdit(Cmanager cmanager) {
         System.out.println("Edit clicked for: " + cmanager.getName());
-        // Implement your edit logic
+        Stage nstage = new Stage();
+        Scene nscene = null;
+        try {
+            nscene = new Scene(loadFXML("EditProduct"));
+        } catch (Exception _) {
+        }
+        nstage.setScene(nscene);
+        nstage.show();
+
+
+
+
     }
 
     // Define the delete action
+
     @FXML
     public void handleDelete(Cmanager cmanager) {
         System.out.println("Delete clicked for: " + cmanager.getName());
-        // Implement your delete logic
+        RemoveEntity removeEty = new RemoveEntity();
+        removeEty.removeEntity(cmanager.getCmId(), "cmId", "counter_manager");
+        Stage nstage = new Stage();
+        Scene nscene = null;
+        try {
+            nscene = new Scene(loadFXML("RemoveConfirmation"));
+        } catch (Exception _) {
+        }
+        nstage.setScene(nscene);
+        nstage.show();
     }
 
     @FXML
