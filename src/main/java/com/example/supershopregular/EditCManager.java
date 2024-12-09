@@ -1,4 +1,4 @@
 package com.example.supershopregular;
 
-public class UpdateCustomer {
+public class EditCManager {
 }

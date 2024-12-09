@@ -5,9 +5,11 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
+
 import backend.RemoveEntity;
 import backend.RetrieveCManager;
 import backend.RetrieveProducts;
+import backend.UpdateProduct;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -105,13 +107,27 @@ public class ProductDetails implements Initializable {
     }
 
     // Define the edit action
+    static int dataGur;
     @FXML
     public void handleEdit(Products product) {
         System.out.println("Edit clicked for: " + product.getPName());
-        // Implement your edit logic
+        Stage nstage = new Stage();
+        Scene nscene = null;
+        try {
+            nscene = new Scene(loadFXML("EditProduct"));
+        } catch (Exception _) {
+        }
+        nstage.setScene(nscene);
+        nstage.show();
+        EditProduct editPro = new EditProduct();
+        dataGur= product.pID;;
+
+
+
     }
 
     // Define the delete action
+
     @FXML
     public void handleDelete(Products product) {
         System.out.println("Delete clicked for: " + product.getPName());
@@ -145,3 +161,4 @@ public class ProductDetails implements Initializable {
         stage.show();
     }
     }
+

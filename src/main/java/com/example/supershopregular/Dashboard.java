@@ -22,4 +22,10 @@ public class Dashboard {
         scene.setRoot(loadFXML("TransactionDetails"));
     }
 
+    @FXML
+    public void onClickSell(ActionEvent event) throws IOException {
+        System.out.println("Clicked on Product Detail");
+        scene.setRoot(loadFXML("Sell"));
+    }
+
 }
