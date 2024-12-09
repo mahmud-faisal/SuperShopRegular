@@ -16,7 +16,10 @@ public class DashboardAdmin {
     @FXML
     private Label accountHolder;
 
-
+    @FXML
+    public void initialize() {
+        accountHolder.setText(accountName);  // Set the account name when the view is initialized
+    }
 
     @FXML
     public void onClickProducts(ActionEvent event) throws IOException {

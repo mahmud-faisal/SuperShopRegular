@@ -1,7 +1,6 @@
 package com.example.supershopregular;
 
 import backend.DBMSConnection;
-import backend.InsertCManager;
 import backend.InsertCustomer;
 import backend.InsertTransaction;
 import javafx.fxml.FXML;
@@ -16,7 +15,7 @@ import static com.example.supershopregular.HelloApplication.scene;
 
 public class Sell {
     @FXML
-    private TextField paQuantity;
+    private TextField sQuantity;
 
     @FXML
     private TextField sAddress;
@@ -37,8 +36,10 @@ public class Sell {
 
 //    @FXML
 //    private Label sQuan;
-    private Timestamp sellDate = new Timestamp(System.currentTimeMillis());
+    private final Timestamp sellDate = new Timestamp(System.currentTimeMillis());
     private static double soldPrice;
+    private java.lang.Integer Integer;
+
     public void priceAndStock(int pID) throws SQLException, ClassNotFoundException {
         DBMSConnection dbmsConnect=new DBMSConnection("jdbc:mysql://localhost:3306/shopease","root","");
         Connection con=dbmsConnect.getConnection();
@@ -51,6 +52,7 @@ public class Sell {
         if (rs.next()) {
             quantity = rs.getInt("quantityInStock");
             unitPrice = rs.getDouble("price");
+            System.out.println("Okay 5454");
 
         }
         else {
@@ -60,8 +62,10 @@ public class Sell {
 
         int updatedQuantity;
         double totalPrice;
-        int soldQuan;
-        soldQuan = Integer.parseInt(paQuantity.getText());
+
+        System.out.println("Haha:"+sQuantity.getText());
+        int soldQuan = Integer.parseInt(sQuantity.getText());
+        System.out.println(soldQuan);
         totalPrice  = soldQuan *  unitPrice ;
         updatedQuantity =  quantity - soldQuan;
         String sql="UPDATE products SET quantityInStock = ? WHERE productID = ?";
@@ -70,18 +74,21 @@ public class Sell {
         statements.setInt(2, pID);
         int rowsUpdated = statements.executeUpdate();
         soldPrice=totalPrice;
-
+        System.out.println("Sold price:" + soldPrice);
     }
 
     @FXML
-    public void handleSell(javafx.event.ActionEvent event){
+    public void handleSell(javafx.event.ActionEvent event) throws SQLException, ClassNotFoundException {
 //        double price = Double.parseDouble(sTotal.getText());
+        Sell sell = new Sell();
+        sell.priceAndStock(java.lang.Integer.parseInt(sPID.getText()));
         Transaction sellTrans = new Transaction(0,0,sellDate,sRemark.getText(),soldPrice);
         InsertTransaction insTran = new InsertTransaction();
         insTran.insertTransaction(sellTrans);
         Customer sellCustomer = new Customer(0,sCName.getText(),"",sEmail.getText(),sPhone.getText(),sAddress.getText(),sellDate,soldPrice);
         InsertCustomer insCos = new InsertCustomer();
         insCos.insertCustomer(sellCustomer);
+        System.out.println("Sold");
     }
     @FXML
     public void onClickBackHome(javafx.event.ActionEvent event) throws IOException {

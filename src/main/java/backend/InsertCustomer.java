@@ -12,14 +12,16 @@ public class InsertCustomer {
             DBMSConnection dbmsConnect = new DBMSConnection("jdbc:mysql://localhost:3306/shopease", "root", "");
             Connection con = dbmsConnect.getConnection();
 
-            String sql = "INSERT INTO customer (firstName, email, phone, address,totalSpend) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO customer (INSERT INTO customer (firstName, lastName, email, phone, address, totalSpend, regDate) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(sql);
 
             stmt.setString(1, customer.getCFirstName());
-            stmt.setDouble(5, customer.getTotalSpend());
-            stmt.setString(2, customer.getCEmail());
-            stmt.setString(3, customer.getCPhone());
-            stmt.setString(4, customer.getCAddress());
+            stmt.setString(2, customer.getCLastName());
+            stmt.setString(3, customer.getCEmail());
+            stmt.setString(4, customer.getCPhone());
+            stmt.setString(5, customer.getCAddress());
+            stmt.setDouble(6, customer.getTotalSpend());
+            stmt.setTimestamp(7, customer.getCRegDate());
 
 
 
